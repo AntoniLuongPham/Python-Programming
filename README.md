@@ -1,3 +1,1 @@
-# StoryTime
-
-Story-telling using Python
+# Python Programming
