@@ -1,9 +1,10 @@
 # Yeu cau:
 # Hoc sinh hien thuc ham search_profile_with_better_score voi 2 inputs
-#  - students: la mang chua cac tu dien, moi tu dien luu thong tin cua mot ban hoc sinh
+#  - students: la mang chua cac tu dien, moi tu dien luu thong tin cua mot ban
+# hoc sinh
 #  - score: diem so mon tin hoc
-# Ham search_profile_with_better_score tra ve mang chua ten cac ban hoc sinh co diem
-# mon tin hoc cao hon score
+# Ham search_profile_with_better_score tra ve mang chua ten cac ban hoc sinh co
+# diem mon tin hoc cao hon score
 
 # Goi y:
 # - Co the dung ham append() de them mot phan tu vao trong mang
