@@ -14,6 +14,10 @@
 # 4
 # ['Bach Tuyet”, 'Lo Lem”, 'Moc Lan”]
 
+
+# FILTERING EXAMPLE
+
+# original list
 nhan_vat = [
     'Bach Tuyet',
     'Tom va Jerry',
@@ -23,12 +27,15 @@ nhan_vat = [
     'Mickey Mouse'
 ]
 
+# filtered list, initialized as empty
 cong_chua = []
 
 for i in range(len(nhan_vat)):
     who = nhan_vat[i]
+
+    # check if member of list is "good" or satisfies a condition
     if who in ['Bach Tuyet', 'Lo Lem', 'Moc Lan']:
         print(i)
-        cong_chua.append(who)
+        cong_chua.append(who)   # append "good" member to filtered list
 
 print(cong_chua)
