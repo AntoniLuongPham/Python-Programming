@@ -30,6 +30,7 @@ nhan_vat = [
 # filtered list, initialized as empty
 cong_chua = []
 
+# iterate over original list
 for i in range(len(nhan_vat)):
     who = nhan_vat[i]
 
