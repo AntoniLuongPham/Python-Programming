@@ -15,13 +15,12 @@
 # TODO: Hoc sinh chi duoc lap trinh tu dong lenh nay tro xuong
 
 import random
-
+answer = random.randint(0, 10)
 print("To dang nghi den 1 so nguyen nam trong khoang 0 den 10.")
 
 counter = 0
 
 while counter < 3:
-    answer = random.randint(0, 10)
     choice = int(input('Do ban biet to dang nghi den so nao? '))
 
     if choice < answer:
@@ -34,4 +33,4 @@ while counter < 3:
         print('Dung roi!')
         break
 
-    counter = counter + 1
+    counter += 1
