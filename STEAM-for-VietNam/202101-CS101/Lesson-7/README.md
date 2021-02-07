@@ -1,1 +1,1 @@
-# Lesson 07
+# Bài học số 7: Thử thách cuối cùng
