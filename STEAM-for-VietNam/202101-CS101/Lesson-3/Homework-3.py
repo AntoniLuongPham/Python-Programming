@@ -5,7 +5,8 @@
 # thuc_an_trong_tu_lanh.remove("kem")
 # print(thuc_an_trong_tu_lanh)
 
-# Bạn hãy viết hàm “remove_max” nhận vào một mảng các con số và loại bỏ số lớn nhất ra khỏi mảng đó.
+# Bạn hãy viết hàm “remove_max” nhận vào một mảng các con số và loại bỏ số lớn
+# nhất ra khỏi mảng đó.
 
 # Gợi ý: bạn hãy sử dụng hàm “find_max” mà bạn vừa làm ở bài tập trước
 def find_max(number_array):
