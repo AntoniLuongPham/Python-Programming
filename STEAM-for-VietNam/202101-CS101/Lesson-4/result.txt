@@ -1,0 +1,63 @@
+Ha Noi,Gau map
+Ho Chi Minh,Lion
+Dak Nong,Pumbaa
+Ha Tinh,Hanah
+Lam Dong,Sumo
+Ha Giang,Meo con
+Bac Lieu,Soc nho
+Ca Mau,Diana
+Nghe An,Tom
+Bac Kan,Akila
+Tuyen Quang,Cun con
+Lao Cai,Panda
+Son La,Hero
+Yen Bai,Su tu
+Hoa Binh,Lo lem
+Thai Nguyen,Bach tuyet
+Quang Ninh,Chu lun
+Bac Giang,Nobita
+Phu Tho,Khung long
+Vinh Phuc,Mickey
+Ninh Binh,Voi con
+Thanh Hoa,Coca
+Bac Ninh,Pepsi
+Cao Bang,Be heo
+Hai Duong,Su su
+Thai Binh,Dumbo
+Lang Son,Banh bao
+Ha Nam,Andy
+Vinh Long,Lavie
+Dong Thap,Oscar
+An Giang,Hat tieu
+Kien Giang,Tina
+Can Tho,Tammy
+Hau Giang,Tung nui
+Soc Trang,Cong chua
+Nam Dinh,Boy dep trai
+Quang Binh,Tuna
+Quang Tri,Kitten
+Hue,Hoang tu
+Long An,Soc iu
+Da Nang,Marvin
+Quang Nam,Thien than
+Dien Bien,Gau meo
+Tra Vinh,Cat
+Lai Chau,Ahihi
+Quang Ngai,Ga me
+Binh Dinh,Chom chom
+Phu Yen,Shin
+Hai Phong,Sushi
+Hung Yen,Jerry
+Binh Duong,Gau Pooh
+Dong Nai,Bi em
+Khanh Hoa,Nemo
+Ninh Thuan,Cherry
+Binh Thuan,Hat tieu
+Kon Tum,Kem
+Gia Lai,Vodka
+Dak Lak,Vit Donald
+Binh Phuoc,Jaian
+Tay Ninh,Xuka
+Ba Ria-Vung Tau,Son Tung
+Tien Giang,Khoai lang
+Ben Tre,Tiger
