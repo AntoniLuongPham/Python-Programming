@@ -1,12 +1,12 @@
 def read_file():
-    f = open("applicants.csv", "r")
+    f = open("applications.csv", "r")
     all_lines = f.readlines()
-    all_applicants = []
+    all_applications = []
     for line in all_lines:
         clean_data = line.strip()
         data = clean_data.split(",")
-        all_applicants.append(data)
-    return all_applicants
+        all_applications.append(data)
+    return all_applications
 
 
 print(read_file())
