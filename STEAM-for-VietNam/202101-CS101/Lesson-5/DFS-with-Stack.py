@@ -71,7 +71,7 @@ def draw_square(x, y, size, border_color, fill_color):
 
     # Vẽ 4 cạnh
     for i in range(4):
-        forward(size)   # Vẽ 1 cạnh\
+        forward(size)   # Vẽ 1 cạnh
         right(90)   # Quay một góc 90 độ để vẽ cạnh tiếp theo
 
     end_fill()
@@ -83,7 +83,7 @@ def draw_maze(maze):
     screensize(400, 400)   # Kích thước mê cung tính theo pixel
     top = 200   # Toạ độ điểm trên cùng
     left = -200   # Toạ độ điểm phía bên trái cùng
-    cell_size = 400/len(maze)   # Kích thước mỗi ô vuông
+    cell_size = 400 / len(maze)   # Kích thước mỗi ô vuông
 
     # Duyệt từng phần tử ở trong mảng hai chiều để tiến hành vẽ từng ô vuông
     for row in range(len(maze)):
@@ -93,18 +93,19 @@ def draw_maze(maze):
             y = top - row * cell_size
 
             # Vẽ ô vuông theo các trạng thái khác nhau
-            if (maze[row][col] == 0):  # tường
+            if (maze[row][col] == 0):   # tường
                 draw_square(x, y, cell_size, 'white', 'black')
-            elif (maze[row][col] == 1):  # Đường đi chưa ghé thăm
+            elif (maze[row][col] == 1):   # Đường đi chưa ghé thăm
                 draw_square(x, y, cell_size, 'black', 'white')
-            elif (maze[row][col] == -1):  # Đường đi đã ghé thăm
+            elif (maze[row][col] == -1):   # Đường đi đã ghé thăm
                 draw_square(x, y, cell_size, 'black', 'yellow')
-            elif (maze[row][col] == -2):  # Đường cụt
+            elif (maze[row][col] == -2):   # Đường cụt
                 draw_square(x, y, cell_size, 'black', 'grey')
-            elif (maze[row][col] == 2):  # Điểm bắt đầu
+            elif (maze[row][col] == 2):   # Điểm bắt đầu
                 draw_square(x, y, cell_size, 'white', 'green')
-            elif (maze[row][col] == 3):  # Điểm kết thúc
+            elif (maze[row][col] == 3):   # Điểm kết thúc
                 draw_square(x, y, cell_size, 'white', 'red')
+
     update()   # Hiển thị mê cung ra màn hình
 
 # ===================================
@@ -174,11 +175,11 @@ while True:
     if (row > 0 and maze_array[row - 1][col] > 0):
         # Gán ô tiếp theo sẽ là ô bên trên của ô hiện tại
         next_cell = [row - 1, col]
-    elif (row < 9 and maze_array[row + 1][col] > 0):  # Kiểm tra ô bên dưới
+    elif (row < 9 and maze_array[row + 1][col] > 0):   # Kiểm tra ô bên dưới
         next_cell = [row + 1, col]
-    elif (col > 0 and maze_array[row][col - 1] > 0):  # Kiểm tra ô bên trái
+    elif (col > 0 and maze_array[row][col - 1] > 0):   # Kiểm tra ô bên trái
         next_cell = [row, col - 1]
-    elif (col < 9 and maze_array[row][col + 1] > 0):  # Kiểm tra ô bên phải
+    elif (col < 9 and maze_array[row][col + 1] > 0):   # Kiểm tra ô bên phải
         next_cell = [row, col + 1]
     # ====================================================================
 
@@ -190,7 +191,7 @@ while True:
         push_to_stack(current_cell)
         current_cell = next_cell
 
-    else:  # Nếu không thể đi được tới ô nào cả
+    else:   # Nếu không thể đi được tới ô nào cả
         # Chuyển ô hiện tại sang màu xám để báo đường cụt
         maze_array[row][col] = -2
 
