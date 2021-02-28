@@ -7,6 +7,12 @@
 # - Viết hàm push cho stack
 # - Hàm sẽ thêm phần tử vào vị trí cuối cùng của một mảng
 
+# hoc sinh lam bai tai day
+
+
+def push(stack, value):
+    stack.append(value)
+    return stack
 
 
 stack = [2, 6, 9]

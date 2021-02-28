@@ -8,6 +8,19 @@
 # - Hàm dequeue sẽ xóa phần tử ở vị trí đầu tiên của một mảng
 # và trả về phần tử vừa xóa đó
 
+# hoc sinh lam bai tai day
+
+
+def enqueue(queue, value):
+    queue.append(value)
+    return queue
+
+
+def dequeue(queue):
+    if queue == []:
+        return None
+    else:
+        return queue.pop(0)
 
 
 queue = [2, 6, 9]

@@ -8,10 +8,16 @@
 # và trả về phần tử vừa xóa đó
 
 
+def pop(stack):
+    if stack == []:
+        return None
+    else:
+        return stack.pop()
+
 
 stack = [2, 6, 9, 1, 4, 3]
 
-# ví dụ 1: 
+# ví dụ 1:
 print(pop(stack))
 print(stack)
 # 3
