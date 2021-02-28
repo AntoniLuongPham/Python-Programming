@@ -14,6 +14,13 @@
 # để đảo ngược thứ tự
 
 
+def reverse_array(array):
+    result = []
+    for _ in range(len(array)):
+        result.append(array.pop())
+    return result
+
+
 print(reverse_array(["o", "l", "l", "e", "h"]))
 # [“h”, “e”, “l”, “l”, “o”]
 print(reverse_array(["n", "a", "m", "e"]))
