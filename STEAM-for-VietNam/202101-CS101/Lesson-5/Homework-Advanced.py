@@ -33,6 +33,35 @@
 def check_valid_parentheses(text):
     valid_opening = {')': "(", "]": "[", "}": "{"}
 
+    opening_brackets_stack = []
+
+    # iterate over text
+    for char in text:
+        # if the char is one of these "(", "[", "{"
+        # then push it to opening_brackets_stack
+        if char in valid_opening.values():
+            opening_brackets_stack.append(char)
+
+        # if the char is one of these ")", "]", "}"
+        elif char in valid_opening.keys():
+            # if there is no opening bracket left in opening_brackets_stack
+            # then the text is invalid
+            if opening_brackets_stack == []:
+                return False
+
+            else:
+                # then pop the top of opening_brackets_stack
+                opening_bracket = opening_brackets_stack.pop()
+
+                # then check if that opening bracket is the correct opening
+                # for char,
+                # if not correct then the text is invalid
+                if opening_bracket != valid_opening[char]:
+                    return False
+
+    # if opening_brackets_stack is empty then the text is valid
+    return opening_brackets_stack == []
+
 
 print(check_valid_parentheses("()"))
 # True
