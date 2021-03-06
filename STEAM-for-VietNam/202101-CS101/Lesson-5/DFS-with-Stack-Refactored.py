@@ -48,8 +48,8 @@ MAZE_1 = [
     [w, w, w, r, w, w, w, w, r, w],
     [w, w, w, r, w, w, w, r, r, w],
     [w, w, w, r, w, r, w, r, w, w],
-    [w, w, w, w, w, r, r, r, w, w],
-    [w, w, w, w, w, E, w, w, w, w]
+    [w, w, w, w, w, r, r, r, r, r],
+    [w, w, w, w, w, w, w, w, w, E]
 ]
 
 MAZE_2 = [
@@ -309,6 +309,6 @@ if __name__ == '__main__':
     tracer(w, 0)   # Ẩn quá trình vẽ của turtle để chương trình chạy nhanh hơn
 
     # solve the maze
-    solve_maze_by_dfs(maze=MAZE_0)
+    solve_maze_by_dfs(maze=MAZE_1)
 
     done()
