@@ -111,6 +111,10 @@ def draw_square(x, y, size, border_color, fill_color):
     end_fill()
 
 
+def measure_maze_dims(maze):
+    return (len(maze), len(maze[0]))
+
+
 # Hàm vẽ toàn bộ mê cung
 # đầu vào maze là một mảng hai chiều
 def draw_maze(maze):
@@ -119,8 +123,7 @@ def draw_maze(maze):
     left = -200   # Toạ độ điểm phía bên trái cùng
     cell_size = 400 / len(maze)   # Kích thước mỗi ô vuông
 
-    n_rows = len(maze)
-    n_cols = len(maze[0])
+    n_rows, n_cols = measure_maze_dims(maze=maze)
 
     # Duyệt từng phần tử ở trong mảng hai chiều để tiến hành vẽ từng ô vuông
     for row in range(n_rows):
@@ -196,10 +199,6 @@ def pop_from_stack(stack):
         return stack.pop()
     else:
         return None
-
-
-def measure_maze_dims(maze):
-    return (len(maze), len(maze[0]))
 
 
 def find_start_cell(maze):
