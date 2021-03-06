@@ -19,10 +19,10 @@ from turtle import (
 # =========
 
 # ĐỊNH NGHĨA CÁC MẢNG MÊ CUNG
-w = 0   # tường
-r = 1   # đường đi chưa ghé thăm
-S = 2   # điểm bắt đầu
-E = 3   # điểm kết thúc
+w = 'WALL'   # tường
+r = 'ROAD'   # đường đi chưa ghé thăm
+S = 'START'   # điểm bắt đầu
+E = 'END'   # điểm kết thúc
 
 CAN_GO_TO_VALUES = {r, S, E}
 
@@ -53,21 +53,21 @@ MAZE_1 = [
 ]
 
 MAZE_2 = [
-    [w, w, w, w, w, w, w, w, w, w],
-    [S, r, r, r, r, r, w, w, w, w],
+    [S, w, w, w, w, w, w, w, w, w],
+    [r, r, r, r, r, r, w, w, w, w],
     [w, w, r, w, w, r, w, r, r, w],
     [w, w, r, w, w, r, w, r, w, w],
     [w, w, r, r, r, r, r, r, r, w],
     [w, w, w, r, w, w, w, w, r, w],
     [w, w, w, r, w, w, w, r, r, w],
     [w, w, w, r, w, r, w, r, w, w],
-    [w, w, w, w, w, r, r, r, w, w],
-    [w, w, w, w, w, E, w, w, w, w]
+    [w, w, r, r, w, r, r, r, w, w],
+    [w, w, E, w, w, w, w, w, w, w]
 ]
 
 MAZE_3 = [
-    [w, w, w, w, w, w, w, w, w, w],
-    [S, r, r, r, r, r, w, w, w, w],
+    [S, w, w, w, w, w, w, w, w, w],
+    [w, r, r, r, r, r, w, w, w, w],
     [w, w, r, w, w, r, w, r, r, w],
     [w, w, r, w, w, r, w, r, w, w],
     [w, w, r, r, r, r, r, r, r, w],
@@ -306,9 +306,9 @@ def solve_maze_by_dfs(maze):
 # ============
 if __name__ == '__main__':
     hideturtle()
-    tracer(w, 0)   # Ẩn quá trình vẽ của turtle để chương trình chạy nhanh hơn
+    tracer(0, 0)   # Ẩn quá trình vẽ của turtle để chương trình chạy nhanh hơn
 
     # solve the maze
-    solve_maze_by_dfs(maze=MAZE_1)
+    solve_maze_by_dfs(maze=MAZE_0)
 
     done()
