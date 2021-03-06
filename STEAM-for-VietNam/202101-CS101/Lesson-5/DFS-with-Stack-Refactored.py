@@ -264,7 +264,7 @@ def solve_maze_by_dfs(maze):
 
         # Kiểm tra nếu ô đi đến là đích thì thoát khỏi vòng lặp,
         # dừng chương trình
-        if (maze[current_row_number][current_col_number] == E):
+        if maze[current_row_number][current_col_number] == E:
             break
 
         # Đánh dấu vị trí hiện tại là đã ghé thăm
