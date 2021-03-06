@@ -15,41 +15,76 @@ from turtle import (
 )
 
 
-hideturtle()
+# CONSTANTS
+# =========
 
-# ===================================
-# === BẮT ĐẦU PHẦN CODE STACK =======
-# ===================================
+# ĐỊNH NGHĨA CÁC MẢNG MÊ CUNG
+w = 0   # tường
+r = 1   # đường đi chưa ghé thăm
+S = 2   # điểm bắt đầu
+E = 3   # điểm kết thúc
 
-# Khởi tạo stack là một mảng trống
-stack = []
+CAN_GO_TO_VALUES = {r, S, E}
+
+MAZE_0 = [
+    [w, w, w, w, w, w, w, w, w, w],
+    [S, r, r, r, r, r, w, w, w, w],
+    [w, w, r, w, w, r, w, r, r, w],
+    [w, w, r, w, w, r, w, r, w, w],
+    [w, w, r, r, r, r, r, r, r, w],
+    [w, w, w, r, w, w, w, w, r, w],
+    [w, w, w, r, w, w, w, r, r, w],
+    [w, w, w, r, w, r, w, r, w, w],
+    [w, w, w, w, w, r, r, r, w, w],
+    [w, w, w, w, w, E, w, w, w, w]
+]
+
+MAZE_1 = [
+    [w, w, w, w, w, w, w, w, w, w],
+    [S, r, r, r, r, r, w, w, w, w],
+    [w, w, r, w, w, r, w, r, r, w],
+    [w, w, r, w, w, r, w, r, w, w],
+    [w, w, r, r, r, r, r, r, r, w],
+    [w, w, w, r, w, w, w, w, r, w],
+    [w, w, w, r, w, w, w, r, r, w],
+    [w, w, w, r, w, r, w, r, w, w],
+    [w, w, w, w, w, r, r, r, w, w],
+    [w, w, w, w, w, E, w, w, w, w]
+]
+
+MAZE_2 = [
+    [w, w, w, w, w, w, w, w, w, w],
+    [S, r, r, r, r, r, w, w, w, w],
+    [w, w, r, w, w, r, w, r, r, w],
+    [w, w, r, w, w, r, w, r, w, w],
+    [w, w, r, r, r, r, r, r, r, w],
+    [w, w, w, r, w, w, w, w, r, w],
+    [w, w, w, r, w, w, w, r, r, w],
+    [w, w, w, r, w, r, w, r, w, w],
+    [w, w, w, w, w, r, r, r, w, w],
+    [w, w, w, w, w, E, w, w, w, w]
+]
+
+MAZE_3 = [
+    [w, w, w, w, w, w, w, w, w, w],
+    [S, r, r, r, r, r, w, w, w, w],
+    [w, w, r, w, w, r, w, r, r, w],
+    [w, w, r, w, w, r, w, r, w, w],
+    [w, w, r, r, r, r, r, r, r, w],
+    [w, w, w, r, w, w, w, w, r, w],
+    [w, w, w, r, w, w, w, r, r, w],
+    [w, w, w, r, w, r, w, r, w, w],
+    [w, w, w, w, w, r, r, r, w, w],
+    [w, w, w, w, w, E, w, w, w, w]
+]
 
 
-# Đưa giá trị vào trong stack, mỗi phần tử trong Stack sẽ là một cell.
-# cell là một mảng gồm 2 phần tử là hàng và cột. Ví dụ [2, 3]
-def push_to_stack(cell):
-    stack.append(cell)
+ALREADY_TRIED = 'ALREADY_TRIED'   # đường đi đã ghé thăm
+DEAD_END = 'DEAD_END'   # đường đi dẫn vào đường cụt
 
 
-# Lấy giá trị ra khỏi stack
-# Trả về một mảng gồm 2 phần tử là hàng và cột. Ví dụ [2, 3]
-def pop_from_stack():
-    if stack_len() > 0:
-        return stack.pop()
-    else:
-        return None
-
-
-# Trả ra số phần tử hiện có trong stack
-def stack_len():
-    return len(stack)
-
-
-# ===================================
-
-# ===================================
-# =========== CÁC HÀM VẼ ============
-# ===================================
+# FUNCTIONS
+# =========
 
 # Hàm vẽ hình vuông, dùng để vẽ mỗi ô vuông trong mê cung
 # x, y là toạ độ của điểm góc trên bên trái của hình vuông
@@ -57,9 +92,8 @@ def stack_len():
 # border_color là màu của đường viền
 # fill_color là màu của hình vuông
 def draw_square(x, y, size, border_color, fill_color):
-    # Chỉnh đến vị trí góc trên bên trái của hình vuông
     penup()   # Nhấc bút vẽ lên
-    goto(x, y)   # Đi đến toạ độ xác định
+    goto(x, y)   # Đi đến toạ độ vị trí góc trên bên trái của hình vuông
     setheading(0)   # Đặt hướng cho turtle
     speed('fastest')   # Đặt tốc độ vẽ của turtle
     pendown()   # Đặt bút xuống để vẽ
@@ -70,7 +104,7 @@ def draw_square(x, y, size, border_color, fill_color):
     begin_fill()
 
     # Vẽ 4 cạnh
-    for i in range(4):
+    for _ in range(4):
         forward(size)   # Vẽ 1 cạnh
         right(90)   # Quay một góc 90 độ để vẽ cạnh tiếp theo
 
@@ -85,134 +119,196 @@ def draw_maze(maze):
     left = -200   # Toạ độ điểm phía bên trái cùng
     cell_size = 400 / len(maze)   # Kích thước mỗi ô vuông
 
+    n_rows = len(maze)
+    n_cols = len(maze[0])
+
     # Duyệt từng phần tử ở trong mảng hai chiều để tiến hành vẽ từng ô vuông
-    for row in range(len(maze)):
-        for col in range(len(maze[0])):
+    for row in range(n_rows):
+        for col in range(n_cols):
+            cell_value = maze[row][col]
+
             # Tính toạ độ của mỗi ô vuông
             x = left + col * cell_size
             y = top - row * cell_size
 
             # Vẽ ô vuông theo các trạng thái khác nhau
-            if (maze[row][col] == 0):   # tường
-                draw_square(x, y, cell_size, 'white', 'black')
-            elif (maze[row][col] == 1):   # Đường đi chưa ghé thăm
-                draw_square(x, y, cell_size, 'black', 'white')
-            elif (maze[row][col] == -1):   # Đường đi đã ghé thăm
-                draw_square(x, y, cell_size, 'black', 'yellow')
-            elif (maze[row][col] == -2):   # Đường cụt
-                draw_square(x, y, cell_size, 'black', 'grey')
-            elif (maze[row][col] == 2):   # Điểm bắt đầu
-                draw_square(x, y, cell_size, 'white', 'green')
-            elif (maze[row][col] == 3):   # Điểm kết thúc
-                draw_square(x, y, cell_size, 'white', 'red')
+            if cell_value == w:   # tường
+                draw_square(
+                    x=x,
+                    y=y,
+                    size=cell_size,
+                    border_color='white',
+                    fill_color='black')
+
+            elif cell_value == r:   # Đường đi chưa ghé thăm
+                draw_square(
+                    x=x,
+                    y=y,
+                    size=cell_size,
+                    border_color='black',
+                    fill_color='white')
+
+            elif cell_value == S:   # Điểm bắt đầu
+                draw_square(
+                    x=x,
+                    y=y,
+                    size=cell_size,
+                    border_color='white',
+                    fill_color='green')
+
+            elif cell_value == E:   # Điểm kết thúc
+                draw_square(
+                    x=x,
+                    y=y,
+                    size=cell_size,
+                    border_color='white',
+                    fill_color='red')
+
+            elif cell_value == ALREADY_TRIED:   # Đường đi đã ghé thăm
+                draw_square(
+                    x=x,
+                    y=y,
+                    size=cell_size,
+                    border_color='black',
+                    fill_color='yellow')
+
+            elif cell_value == DEAD_END:   # Đường cụt
+                draw_square(
+                    x=x,
+                    y=y,
+                    size=cell_size,
+                    border_color='black',
+                    fill_color='grey')
 
     update()   # Hiển thị mê cung ra màn hình
 
-# ===================================
+
+# Đưa giá trị vào trong stack, mỗi phần tử trong Stack sẽ là một cell.
+# cell là một mảng gồm 2 phần tử là hàng và cột. Ví dụ [S, 3]
+def push_to_stack(stack, item):
+    stack.append(item)
 
 
-# ==== ĐỊNH NGHĨA MẢNG MÊ CUNG =====
-# -2: đường đi dẫn vào đường cụt
-# -1: đường đi đã ghé thăm
-# 0: tường
-# 1: đường đi chưa ghé thăm
-# 2: điểm bắt đầu
-# 3: điểm kết thúc
-maze_array = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [2, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 1, 0, 1, 1, 0],
-    [0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
-    [0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
-    [0, 0, 0, 1, 0, 0, 0, 1, 1, 0],
-    [0, 0, 0, 1, 0, 1, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0, 3, 0, 0, 0, 0]
-]
+# Lấy giá trị ra khỏi stack
+# Trả về một mảng gồm 2 phần tử là hàng và cột. Ví dụ [S, 3]
+def pop_from_stack(stack):
+    if len(stack) > 0:
+        return stack.pop()
+    else:
+        return None
 
-tracer(0, 0)   # Ẩn quá trình vẽ của turtle để chương trình chạy nhanh hơn
 
-# Vẽ mê cung ban đầu
-draw_maze(maze_array)
+def measure_maze_dims(maze):
+    return (len(maze), len(maze[0]))
 
-# =========================================
-# =========================================
-# ==== BẮT ĐẦU QUÁ TRÌNH BIỂU DIỄN DFS ====
-# =========================================
-# =========================================
 
-# =====================================
-# === BƯỚC 1: ĐI ĐẾN ĐIỂM XUẤT PHÁT ===
-# =====================================
-# Trạng thái ban đầu tại ô xuất phát: hàng 1 cột 0
-current_cell = [1, 0]
+def find_start_cell(maze):
+    n_rows, n_cols = measure_maze_dims(maze=maze)
 
-# Chạy vòng lặp cho đến khi tìm được đích đến
-# hoặc không tìm được, phải quay về nơi xuất phát
-while True:
-    # ========================================
-    # === BƯỚC 2: ĐÁNH DẤU VỊ TRÍ HIỆN TẠI ===
-    # ========================================
-    row = current_cell[0]   # Hàng tương ứng với vị trí hiện tại
-    col = current_cell[1]   # Cột tương ứng với vị trí hiện tại
+    for row_number in range(n_rows):
+        for col_number in range(n_cols):
+            cell_value = maze[row_number][col_number]
+            if cell_value == S:
+                return (row_number, col_number)
 
-    # Kiểm tra nếu ô đi đến là đích (giá trị = 3) thì thoát khỏi vòng lặp,
-    # dừng chương trình
-    if (maze_array[row][col] == 3):
-        break
+    return None
 
-    # Đánh dấu vị trí hiện tại là đã ghé thăm (giá trị = -1)
-    maze_array[row][col] = -1
-    # ====================================================================
 
-    # ====================================================================
-    # === BƯỚC 3: NHÌN TRÊN DƯỚI TRÁI PHẢI XEM CÓ ĐƯỜNG ĐI KHÔNG =========
-    # ====================================================================
-    next_cell = None
+def find_next_cell(maze, current_cell):
+    n_rows, n_cols = measure_maze_dims(maze=maze)
+    current_row_number, current_col_number = current_cell
 
     # Kiểm tra nếu có thể đi lên ô bên trên được không
-    if (row > 0 and maze_array[row - 1][col] > 0):
-        # Gán ô tiếp theo sẽ là ô bên trên của ô hiện tại
-        next_cell = [row - 1, col]
-    elif (row < 9 and maze_array[row + 1][col] > 0):   # Kiểm tra ô bên dưới
-        next_cell = [row + 1, col]
-    elif (col > 0 and maze_array[row][col - 1] > 0):   # Kiểm tra ô bên trái
-        next_cell = [row, col - 1]
-    elif (col < 9 and maze_array[row][col + 1] > 0):   # Kiểm tra ô bên phải
-        next_cell = [row, col + 1]
-    # ====================================================================
+    if (current_row_number > 0) and \
+            (maze[current_row_number - 1][current_col_number]
+             in CAN_GO_TO_VALUES):
+        return (current_row_number - 1, current_col_number)
 
-    # Kiểm tra nếu tồn tại một ô để đi, có nghĩa chưa phải đường cụt
-    if next_cell is not None:
-        # =====================================================================
-        # == BƯỚC 4: Đưa ô hiện tại vào Stack, rồi di chuyển đến ô tiếp theo ==
-        # =====================================================================
-        push_to_stack(current_cell)
-        current_cell = next_cell
+    # Kiểm tra ô bên phải
+    elif (current_col_number < n_cols - 1) and \
+            (maze[current_row_number][current_col_number + 1]
+             in CAN_GO_TO_VALUES):
+        return (current_row_number, current_col_number + 1)
 
-    else:   # Nếu không thể đi được tới ô nào cả
-        # Chuyển ô hiện tại sang màu xám để báo đường cụt
-        maze_array[row][col] = -2
+    # Kiểm tra ô bên dưới
+    elif (current_row_number < n_rows - 1) and \
+            (maze[current_row_number + 1][current_col_number]
+             in CAN_GO_TO_VALUES):
+        return (current_row_number + 1, current_col_number)
 
-        # =====================================================================
-        # == BƯỚC 5: Quay lại vị trí trước đó bằng cách lấy một ô trong Stack==
-        # =====================================================================
+    # Kiểm tra ô bên trái
+    elif (current_col_number > 0) and \
+            (maze[current_row_number][current_col_number - 1]
+             in CAN_GO_TO_VALUES):
+        return (current_row_number, current_col_number - 1)
 
-        # Lấy từ trong Stack ra một ô để quay lại vị trí ngay trước đó
-        current_cell = pop_from_stack()
+    else:
+        return None
 
-        if current_cell is None:
+
+def solve_maze_by_dfs(maze):
+    # Vẽ mê cung ban đầu
+    draw_maze(maze)
+
+    # Khởi tạo stack là một mảng trống
+    stack = []
+
+    # ĐI ĐẾN ĐIỂM XUẤT PHÁT
+    current_cell = find_start_cell(maze=maze)
+
+    # Chạy vòng lặp cho đến khi tìm được đích đến
+    # hoặc không tìm được, phải quay về nơi xuất phát
+    while True:
+        # ĐÁNH DẤU VỊ TRÍ HIỆN TẠI
+        current_row_number, current_col_number = current_cell
+
+        # Kiểm tra nếu ô đi đến là đích thì thoát khỏi vòng lặp,
+        # dừng chương trình
+        if (maze[current_row_number][current_col_number] == E):
+            break
+
+        # Đánh dấu vị trí hiện tại là đã ghé thăm
+        maze[current_row_number][current_col_number] = ALREADY_TRIED
+
+        # find where to go next
+        next_cell = find_next_cell(maze=maze, current_cell=current_cell)
+
+        # Kiểm tra nếu tồn tại một ô để đi, có nghĩa chưa phải đường cụt
+        if next_cell is not None:
+            # Đưa ô hiện tại vào Stack, rồi di chuyển đến ô tiếp theo
+            push_to_stack(stack=stack, item=current_cell)
+            current_cell = next_cell
+
+        # Nếu không thể đi được tới ô nào cả
+        else:
+            # Chuyển ô hiện tại sang màu xám để báo đường cụt
+            maze[current_row_number][current_col_number] = DEAD_END
+
+            # Quay lại vị trí trước đó bằng cách lấy một ô trong Stack
+            # Lấy từ trong Stack ra một ô để quay lại vị trí ngay trước đó
+            current_cell = pop_from_stack(stack=stack)
+
             # Nếu Stack mà không chứa bất cứ ô nào,
             # nghĩa là tất cả mọi đường đi đều cụt,
             # mê cung không có lối ra.
             # Thoát khỏi vòng lặp và dừng chương trình.
-            break
+            if current_cell is None:
+                break
 
-    # Vẽ lại mê cung sau khi đã thay đổi trạng thái các ô
-    draw_maze(maze_array)
+        # Vẽ lại mê cung sau khi đã thay đổi trạng thái các ô
+        draw_maze(maze)
 
-    # Thời gian dừng giữa mỗi bước (tính theo giây) để dễ quan sát
-    time.sleep(0.2)
+        # Thời gian dừng giữa mỗi bước (tính theo giây) để dễ quan sát
+        time.sleep(0.2)
 
-done()
+
+# MAIN PROGRAM
+# ============
+if __name__ == '__main__':
+    hideturtle()
+    tracer(w, 0)   # Ẩn quá trình vẽ của turtle để chương trình chạy nhanh hơn
+
+    # solve the maze
+    solve_maze_by_dfs(maze=MAZE_0)
+
+    done()
