@@ -24,7 +24,6 @@ r = 'ROAD'   # đường đi chưa ghé thăm
 S = 'START'   # điểm bắt đầu
 E = 'END'   # điểm kết thúc
 
-CAN_GO_TO_VALUES = {r, S, E}
 
 MAZE_0 = [
     [w, w, w, w, w, w, w, w, w, w],
@@ -78,6 +77,8 @@ MAZE_3 = [
     [w, w, w, w, w, E, w, w, w, w]
 ]
 
+
+CAN_GO_TO_VALUES = {r, S, E}
 
 ALREADY_TRIED = 'ALREADY_TRIED'   # đường đi đã ghé thăm
 DEAD_END = 'DEAD_END'   # đường đi dẫn vào đường cụt
