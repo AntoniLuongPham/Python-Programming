@@ -48,7 +48,9 @@ class BasicGame(Game):
 
                 for item in self.items:  # kiem tra tung do vat
                     if self.player.touch(item):  # neu nguoi choi cham vao do vat nay
-                        print("lam sao de nguoi choi nhat len 1 do vat?")
+                        self.player.pick_up_item(item)
+                        self.player.hp += item.hp_change
+                        self.items.remove(item)
 
                 self.check_game_over()  # kiem tra xem game dang ket thuc chua
                 self.draw_new_frame()   # ve frame ke tiep

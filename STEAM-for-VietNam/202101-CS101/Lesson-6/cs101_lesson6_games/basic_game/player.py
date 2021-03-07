@@ -7,6 +7,10 @@ class Player:
 
         self.speed = 5
         self.hp = 20
+        self.items = []
+
+    def pick_up_item(self, item):
+        self.items.append(item)
 
     def moveRight(self):
         self.x = self.x + self.speed
