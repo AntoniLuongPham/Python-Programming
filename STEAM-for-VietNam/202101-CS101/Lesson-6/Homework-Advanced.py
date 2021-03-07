@@ -27,28 +27,19 @@ class Person:
 
 
 class Student(Person):
-    def __init__(self, name, age, teacher):
+    def __init__(self, name, age, school):
         super().__init__(name=name, age=age)
-        self.teacher = teacher
-
-    def get_teacher(self):
-        return self.teacher
+        self.school = school
 
     def greet_teacher(self, teacher):
         print(f"Hi, teacher {teacher.name}! "
-              f"I'm studying at {self.teacher.school} school.")
+              f"I'm studying at {self.school} school.")
 
 
 class Teacher(Person):
     def __init__(self, name, age, school):
         super().__init__(name=name, age=age)
         self.school = school
-
-    def add_student(self, student):
-        self.students.append(student)
-
-    def list_students(self):
-        return self.students
 
     def greet_student(self, student):
         print(f"Hi, student {student.name}! "
