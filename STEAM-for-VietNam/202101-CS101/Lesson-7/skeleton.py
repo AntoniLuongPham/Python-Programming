@@ -128,11 +128,11 @@ class Dancer(pg.sprite.Sprite):
     def load_images(self):
         count = 0
         for move in moves:
-            count+=1
+            count += 1
             sprites = []
             for sprite in moves[move]['sprites']:
                 sprites.append(pg.image.load(os.path.join(ASSETS_PATH+move,sprite)))
-            self.moves[move]= {
+            self.moves[move] = {
                 'time': moves[move]['time'],
                 'sprites': sprites
                 }
