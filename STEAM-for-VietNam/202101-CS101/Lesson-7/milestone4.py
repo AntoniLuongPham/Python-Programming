@@ -4,12 +4,12 @@ pg.init()
 clock = pg.time.Clock()
 
 # Cac thong so cua chuong trinh
-WIDTH = 720   # chieu dai cua so pygame
-HEIGHT = 540   # chieu rong cua so pygame
+WIDTH = 720 # chieu dai cua so pygame
+HEIGHT = 540 # chieu rong cua so pygame
 
-FPS = 60   # So luong khung hinh moi giay
+FPS = 60 # So luong khung hinh moi giay
 
-IMAGE_WIDTH = 720   # chieu dai cua
+IMAGE_WIDTH = 720 # chieu dai cua 
 IMAGE_HEIGHT = 540
 OFFSET = 100
 
@@ -48,7 +48,7 @@ moves = {
         'time': 1,
         'sprites': [
             '4.1.png',
-            '4.2.png'
+           '4.2.png'
             ]
         },
     'move5': {
@@ -78,7 +78,6 @@ procedure = [
     'move0'
     ]
 
-
 class Dancer(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -88,25 +87,25 @@ class Dancer(pg.sprite.Sprite):
         self.current_sprite = 0
         self.frames_per_image = 0
         self.count = 0
-
-        # Cac thong so hinh anh
+        
+         # Cac thong so hinh anh
         self.image = None
         self.rect = None
-
+        
     ########################################
     # Khoi tao cac khung hinh anh dau tien #
     ########################################
     def init(self):
         self.load_images()
         self.draw_image(self.moves[procedure[self.current_move]]['sprites'][self.current_sprite])
-
+    
     #######################################################
     # Tai cac hinh anh tu tu dien dinh nghia cac dong tac #
     #######################################################
     def load_images(self):
         count = 0
         for move in moves:
-            count += 1
+            count+=1
             sprites = []
             for sprite in moves[move]['sprites']:
                 sprites.append(pg.image.load(os.path.join(ASSETS_PATH+move,sprite)))
