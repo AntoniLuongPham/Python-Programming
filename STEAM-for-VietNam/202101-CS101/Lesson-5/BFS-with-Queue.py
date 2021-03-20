@@ -81,7 +81,7 @@ MAZE_3 = [
 CAN_GO_TO_VALUES = {r, S, E}
 
 ALREADY_TRIED = 'ALREADY_TRIED'   # đường đi đã ghé thăm
-DEAD_END = 'DEAD_END'   # đường đi dẫn vào đường cụt
+ON_SHORTEST_PATH = 'ON_SHORTEST_PATH'
 
 
 # FUNCTIONS
@@ -176,13 +176,13 @@ def draw_maze(maze):
                     border_color='black',
                     fill_color='yellow')
 
-            elif cell_value == DEAD_END:   # Đường cụt
+            elif cell_value == ON_SHORTEST_PATH:
                 draw_square(
                     x=x,
                     y=y,
                     size=cell_size,
-                    border_color='black',
-                    fill_color='grey')
+                    border_color='white',
+                    fill_color='cyan')
 
     update()   # Hiển thị mê cung ra màn hình
 
@@ -254,8 +254,12 @@ def solve_maze_by_bfs(maze):
     # Vẽ mê cung ban đầu
     draw_maze(maze)
 
+    # find start cell
+    start_cell = find_start_cell(maze=maze)
+    # path tracing
+    just_come_from = {start_cell: None}
     # init queue with start cell
-    queue = [find_start_cell(maze=maze)]
+    queue = [start_cell]
 
     # Chạy vòng lặp cho đến khi tìm được đích đến
     # hoặc không tìm được, phải quay về nơi xuất phát
@@ -274,10 +278,15 @@ def solve_maze_by_bfs(maze):
             # Đánh dấu vị trí hiện tại là đã ghé thăm
             maze[current_row_number][current_col_number] = ALREADY_TRIED
 
-            # find adjacent cells and then enqueue them
+            # find adjacent cells
+            adjacent_cells = find_adjacent_cells(maze=maze,
+                                                 current_cell=current_cell)
+            # path tracing
+            for adjacent_cell in adjacent_cells:
+                just_come_from[adjacent_cell] = current_cell
+            # then enqueue adjacent cells
             enqueue(queue=queue,
-                    items=find_adjacent_cells(maze=maze,
-                                              current_cell=current_cell))
+                    items=adjacent_cells)
 
             # Vẽ lại mê cung sau khi đã thay đổi trạng thái các ô
             draw_maze(maze)
@@ -288,6 +297,15 @@ def solve_maze_by_bfs(maze):
         # else the maze is unsolvable
         else:
             break
+
+    # highlight shortest path
+    path_tracing_cell = current_cell
+    while path_tracing_cell is not None:
+        path_tracing_row_number, path_tracing_col_number = path_tracing_cell
+        maze[path_tracing_row_number][path_tracing_col_number] = \
+            ON_SHORTEST_PATH
+        path_tracing_cell = just_come_from[path_tracing_cell]
+    draw_maze(maze)
 
 
 # MAIN PROGRAM
