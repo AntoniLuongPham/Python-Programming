@@ -1,0 +1,99 @@
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<style>
+.code_add {
+  background-color: #7FFFD4;
+  font-size: 105%;
+  background-image: url("code_add.jpeg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 50px;
+}
+.code_delete {
+   text-decoration: line-through;
+   background-color: #FFB6C1;
+   background-image: url("code_delete.jpeg");
+   background-repeat: no-repeat;
+   background-position: right top;
+   background-size: 50px;
+}
+</style><h2>CS101 - Bài Học Final Project - Cột mốc M2-TổChứcChươngTrình.py</h2><h3>Tổ chức lại chương trình thành các hàm làm các công việc cụ thể</h3><pre><code class='python code_same'>
+# Class thể hiện đối tượng Câu hỏi
+# Một đối tượng Question gồm có 2 fields: 
+# - question: đề bài
+# - answer: đáp án
+class Question:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+        
+# Khai báo dữ liệu câu hỏi và đáp án
+</code></pre>
+<pre><code class='python code_delete'>
+data = [
+</code></pre>
+<pre><code class='python code_add'>
+def read_data():
+    return [
+</code></pre>
+<pre><code class='python code_same'>
+    Question("""
+Một con vịt xòe ra ____ cái cánh
+a. hai
+b. ba
+c. bốn
+d. năm
+""", "a"),
+    Question("""
+Meo meo meo rửa mặt như ____
+a. Vịt
+b. Hổ
+c. Mèo
+d. Thỏ
+""", "c"), 
+    Question("""
+Doraemon là bạn thân của ____
+a. Songoku
+b. Siêu Nhân
+c. Trạng Tí
+d. Nobita 
+""", "d")]
+
+# In câu hỏi ra màn hình
+</code></pre>
+<pre><code class='python code_delete'>
+index = 0
+print(data[index].question)
+
+# Chờ người dùng nhập câu trả lời từ bàn phím
+result = input("Câu trả lời của bạn là gì?\n")
+</code></pre>
+<pre><code class='python code_add'>
+def ask_question(question):
+    print(question.question)
+    result = input("Câu trả lời của bạn là gì?\n")
+    # So sánh kết quả của người chơi nhập vào với đáp án
+    check_result(result, question.answer)</code></pre>
+<pre><code class='python code_same'>
+
+# So sánh câu trả lời với đáp án
+</code></pre>
+<pre><code class='python code_delete'>
+if result == data[index].answer:
+    print("Đúng rồi")
+else:
+    print("Sai rồi")
+</code></pre>
+<pre><code class='python code_add'>
+def check_result(result, answer):
+    if result == answer:
+        print("Đúng rồi")
+    else:
+        print("Sai rồi")
+
+data = read_data()        
+ask_question(data[0])
+</code></pre>

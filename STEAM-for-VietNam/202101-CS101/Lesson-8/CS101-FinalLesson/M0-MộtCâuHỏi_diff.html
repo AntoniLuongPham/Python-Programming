@@ -1,0 +1,44 @@
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<style>
+.code_add {
+  background-color: #7FFFD4;
+  font-size: 105%;
+  background-image: url("code_add.jpeg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 50px;
+}
+.code_delete {
+   text-decoration: line-through;
+   background-color: #FFB6C1;
+   background-image: url("code_delete.jpeg");
+   background-repeat: no-repeat;
+   background-position: right top;
+   background-size: 50px;
+}
+</style><h2>CS101 - Bài Học Final Project - Cột mốc M0-MộtCâuHỏi.py</h2><h3></h3><pre><code class='python code_same'>
+# Khai báo dữ liệu câu hỏi và đáp án
+question = """
+Một con vịt xòe ra ____ cái cánh 
+a. hai
+b. ba
+c. bốn
+d. năm
+"""
+answer = "a"
+
+# In câu hỏi ra màn hình
+print(question)
+
+# Chờ người dùng nhập câu trả lời từ bàn phím
+result = input("Câu trả lời của bạn là gì?\n")
+
+# So sánh câu trả lời với đáp án
+if result == answer:
+    print("Đúng rồi")
+else:
+    print("Sai rồi")
+</code></pre>
