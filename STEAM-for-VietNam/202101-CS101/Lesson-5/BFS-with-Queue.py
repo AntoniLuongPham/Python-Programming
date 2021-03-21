@@ -285,8 +285,7 @@ def solve_maze_by_bfs(maze):
             for adjacent_cell in adjacent_cells:
                 just_come_from[adjacent_cell] = current_cell
             # then enqueue adjacent cells
-            enqueue(queue=queue,
-                    items=adjacent_cells)
+            enqueue(queue=queue, items=adjacent_cells)
 
             # Vẽ lại mê cung sau khi đã thay đổi trạng thái các ô
             draw_maze(maze)
