@@ -1,4 +1,4 @@
-# Bài học số 4: Ai sẽ nhận được vaccine trước?
+# Bài học số 4: Memory - Ai sẽ được nhận Vaccine trước?
 
 Tớ cảm thấy bài giảng ngày hôm nay: very intersting
 Hôm nay, bài học có những phần như sau:  for loops and variables.

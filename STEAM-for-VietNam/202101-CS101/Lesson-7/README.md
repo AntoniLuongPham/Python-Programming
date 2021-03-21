@@ -1,4 +1,4 @@
-# Bài học số 7: Thử thách cuối cùng
+# Bài học số 7: Bài học Đặc biệt - Cùng xoay theo điệu nhạc
 
 Tớ cảm thấy bài giảng ngày hôm nay: a litte bit fast.
 

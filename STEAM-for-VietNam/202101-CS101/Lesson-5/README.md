@@ -1,4 +1,4 @@
-# Bài học số 5: Trẩu giải cứu đội ngũ chuyên gia
+# Bài học số 5: Giải mã mê cung
 
 Tớ cảm thấy bài giảng ngày hôm nay interesting.
 

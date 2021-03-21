@@ -1,4 +1,4 @@
-# Bài học số 6: Phần mềm quản lý vaccine
+# Bài học số 6: Khám phá thế giới đối tượng
 
 Tớ cảm thấy bài giảng ngày hôm nay: very interesting
 
