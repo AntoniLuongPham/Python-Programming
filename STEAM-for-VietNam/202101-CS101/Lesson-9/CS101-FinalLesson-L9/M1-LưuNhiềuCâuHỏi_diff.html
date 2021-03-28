@@ -1,0 +1,99 @@
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<style>
+.code_add {
+  background-color: #7FFFD4;
+  font-size: 105%;
+  background-image: url("code_add.jpeg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 50px;
+}
+.code_delete {
+   text-decoration: line-through;
+   background-color: #FFB6C1;
+   background-image: url("code_delete.jpeg");
+   background-repeat: no-repeat;
+   background-position: right top;
+   background-size: 50px;
+}
+</style><h2>CS101 - Bài Học Final Project - Cột mốc M1-LưuNhiềuCâuHỏi.py</h2><h3>Lưu trữ nhiều câu hỏi và sử dụng đối tượng để lưu câu hỏi</h3><pre><code class='python code_add'>
+# Class thể hiện đối tượng Câu hỏi
+# Một đối tượng Question gồm có 2 fields: 
+# - question: đề bài
+# - answer: đáp án
+class Question:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+        
+</code></pre>
+<pre><code class='python code_same'>
+# Khai báo dữ liệu câu hỏi và đáp án
+</code></pre>
+<pre><code class='python code_delete'>
+question = """
+Một con vịt xòe ra ____ cái cánh 
+a. hai
+b. ba
+c. bốn
+d. năm
+"""
+answer = "a"
+</code></pre>
+<pre><code class='python code_add'>
+data = [
+    Question("""
+Một con vịt xòe ra ____ cái cánh
+a. hai
+b. ba
+c. bốn
+d. năm
+""", "a"),
+    Question("""
+Meo meo meo rửa mặt như ____
+a. Vịt
+b. Hổ
+c. Mèo
+d. Thỏ
+""", "c"), 
+    Question("""
+Doraemon là bạn thân của ____
+a. Songoku
+b. Siêu Nhân
+c. Trạng Tí
+d. Nobita 
+""", "d")]
+</code></pre>
+<pre><code class='python code_same'>
+
+# In câu hỏi ra màn hình
+</code></pre>
+<pre><code class='python code_delete'>
+print(question)
+</code></pre>
+<pre><code class='python code_add'>
+index = 0
+print(data[index].question)
+</code></pre>
+<pre><code class='python code_same'>
+
+# Chờ người dùng nhập câu trả lời từ bàn phím
+result = input("Câu trả lời của bạn là gì?\n")
+
+# So sánh câu trả lời với đáp án
+</code></pre>
+<pre><code class='python code_delete'>
+if result == answer:
+</code></pre>
+<pre><code class='python code_add'>
+if result == data[index].answer:
+</code></pre>
+<pre><code class='python code_same'>
+    print("Đúng rồi")
+else:
+    print("Sai rồi")
+</code></pre>
