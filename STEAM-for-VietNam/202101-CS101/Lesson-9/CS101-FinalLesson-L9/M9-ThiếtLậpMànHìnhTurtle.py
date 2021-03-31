@@ -62,9 +62,9 @@ def generate_math_questions():
     # Số lượng câu hỏi sinh ra.
     num_questions = 3
     # Hai phép toán: cộng và nhân
-    operators = ["+", "x"]    
+    operators = ["+", "-"]    
     # Số lượng chữ số tối đa khi sinh câu hỏi ngẫu nhiên
-    max_digits = 4
+    max_digits = 2
     for i in range(num_questions):
         # Chọn số ngẫu nhiên từ 0 đến 10^max_digits - 1
         a = random.randint(0, 10**max_digits)
@@ -76,8 +76,8 @@ def generate_math_questions():
         # Sinh ra đáp án
         if op == "+":
             answer = a + b
-        elif op == "x":
-            answer = a * b            
+        elif op == "-":
+            answer = a - b
         # Thêm câu hỏi vào danh sách
         data.append(Question(question, str(answer)))
     # Trả về danh sách câu hỏi tính nhẩm Siêu Trí Tuệ.

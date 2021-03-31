@@ -181,7 +181,7 @@ def check_result(result, answer):
     if result == answer:
         # Cộng điểm nếu người chơi trả lời đúng
         # Cộng điểm trả lời đúng và cả điểm thưởng nữa.
-        state.score += 10 + bonus    
+        state.score += 10 + bonus
         # Chơi âm thanh cho biết trả lời đúng.
         play_sound("correct_answer.wav")
 

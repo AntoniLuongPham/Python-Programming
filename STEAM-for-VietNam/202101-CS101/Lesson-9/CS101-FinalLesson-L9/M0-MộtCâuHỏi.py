@@ -1,6 +1,6 @@
 # Khai báo dữ liệu câu hỏi và đáp án
 question = """
-Một con vịt xòe ra ____ cái cánh 
+Một con vịt xòe ra ____ cái cánh
 a. hai
 b. ba
 c. bốn

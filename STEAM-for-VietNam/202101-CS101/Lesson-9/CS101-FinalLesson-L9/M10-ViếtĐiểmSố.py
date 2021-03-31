@@ -64,7 +64,7 @@ def generate_math_questions():
     # Hai phép toán: cộng và nhân
     operators = ["+", "x"]    
     # Số lượng chữ số tối đa khi sinh câu hỏi ngẫu nhiên
-    max_digits = 4
+    max_digits = 1
     for i in range(num_questions):
         # Chọn số ngẫu nhiên từ 0 đến 10^max_digits - 1
         a = random.randint(0, 10**max_digits)
