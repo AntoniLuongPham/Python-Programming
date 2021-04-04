@@ -1,8 +1,10 @@
 If a piece of code is like this:
+
     for _ in range(10):
         print('name')
+
 what will the result be?
 a. name name name name name name name name name name
 b. name
-c. Error becuase it is not for i in
+c. Error becuase it is not "for i in ..."
 d. 10, name

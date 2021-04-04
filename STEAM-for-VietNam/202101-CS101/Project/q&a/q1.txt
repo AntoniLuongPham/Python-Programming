@@ -1,5 +1,5 @@
-Which animal is not an insect?
-a. frog
-b. fly
-c. bird
-d. a and c
+Which animal is NOT an insect?
+a. Frog
+b. Fly
+c. Bird
+d. (a) and (c)

@@ -1,6 +1,6 @@
 Which of these colors are Primary?
-(hint, the primary colors make secondray colors)
-a. red 
-b. blue
-c. green
-d. a and b
+(hint: two primary colors when mixed together make a secondary color)
+a. Red 
+b. Blue
+c. Green
+d. (a) and (b)

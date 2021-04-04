@@ -1,5 +1,5 @@
-If a varible is equal to 1, if we print it out what will it be?
-a. 1, varible
-b. varible1
+If a variable is equal to 1, if we print it out what will it be?
+a. 1, variable
+b. variable1
 c. 1
 d. 2

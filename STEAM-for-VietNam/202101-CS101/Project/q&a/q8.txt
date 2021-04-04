@@ -1,6 +1,6 @@
 If there is a maze that you have to solve,
-which of these ways are faster?
+which of these ways can find the shortest path?
 a. stay there
-b. DFS
-c. BFS
+b. Depth-First Search (DFS)
+c. Breadth-First Search (BFS)
 d. there are no ways
