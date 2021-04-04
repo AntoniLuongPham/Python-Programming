@@ -1,5 +1,5 @@
-Một số trong hệ nhị phân là 10111 thì trong hệ thập phân là bao nhiêu?
-a. 22
-b. 23
-c. 27
-d. 29
+Which colors make teal?
+a. there is no color such as teal
+b. blue and green
+c. red and green
+d. green and black

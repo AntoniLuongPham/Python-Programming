@@ -1,5 +1,5 @@
-Meo meo meo rửa mặt như ____
-a. Vịt
-b. Hổ
-c. Mèo
-d. Thỏ
+What is 100 / 20?
+a. 20
+b. 5
+c. 80
+d. 100

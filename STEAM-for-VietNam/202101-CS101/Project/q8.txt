@@ -1,0 +1,6 @@
+If there is a maze that you have to solve,
+which of these ways are faster?
+a. stay there
+b. DFS
+c. BFS
+d. there are no ways

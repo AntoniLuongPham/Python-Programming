@@ -1,5 +1,5 @@
-Doraemon là bạn thân của ____
-a. Songoku
-b. Siêu Nhân
-c. Trạng Tí
-d. Nobita 
+Một số trong hệ nhị phân là 10111 thì trong hệ thập phân là bao nhiêu?
+a. 22
+b. 23
+c. 27
+d. 29

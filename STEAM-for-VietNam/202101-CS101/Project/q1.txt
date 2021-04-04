@@ -1,6 +1,5 @@
-Một chiếc TV mới giảm giá 20%. 
-Hỏi nó phải tăng bao nhiêu % để trở về giá ban đầu?
-a. 20%
-b. 22%
-c. 25%
-d. 30%
+Which animal is not an insect?
+a. frog
+b. fly
+c. bird
+d. a and c
