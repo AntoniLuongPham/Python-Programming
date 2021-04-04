@@ -4,6 +4,11 @@ import time
 import turtle
 
 
+# constants
+MEDIA_DIR = 'media'
+QA_DIR = 'q&a'
+
+
 # Class thể hiện đối tượng Câu hỏi
 # Một đối tượng Question gồm có 2 fields:
 # - question: đề bài
@@ -84,28 +89,32 @@ def draw_timer():
 # Khai báo dữ liệu câu hỏi và đáp án
 def read_data():
     # Đọc câu hỏi và đáp án từ Files.
+
     # Số lượng câu hỏi
     num_questions = 10
+
     # Ban đầu, mảng dữ liệu là trống
     data = []
+
     # Các file câu hỏi đánh số là q1.txt, q2.txt, q3.txt,...
     # Các file câu trả lời đánh số là a1.txt, a2.txt, a3.txt,...
     # Ta dùng hàm range(1, x + 1) để duyệt qua các số 1, 2, ..., x
     for i in range(1, num_questions + 1):
         # Đọc câu hỏi, dùng encoding='utf-8' để đọc tiếng Việt
-        filename = 'q' + str(i) + '.txt'
+        filename = f'{QA_DIR}/q{i}.txt'
         f = open(filename, 'r', encoding='utf-8')
         question = f.read()
         f.close()
 
         # Đọc đáp án
-        filename = 'a' + str(i) + '.txt'
+        filename = f'{QA_DIR}/a{i}.txt'
         f = open(filename, 'r', encoding='utf-8')
         answer = f.read()
         f.close()
 
         # Tạo đối tượng Question và thêm vào mảng dữ liệu data
         data.append(Question(question, answer))
+
     # Trả về mảng dữ liệu data
     return data
 
@@ -114,27 +123,36 @@ def read_data():
 def generate_math_questions():
     # Ban đầu, danh sách câu hỏi trống.
     data = []
+
     # Số lượng câu hỏi sinh ra.
     num_questions = 3
-    # Hai phép toán: cộng và nhân
+
+    # Hai phép toán: add or minus
     operators = ["+", "-"]
+
     # Số lượng chữ số tối đa khi sinh câu hỏi ngẫu nhiên
     max_digits = 2
-    for i in range(num_questions):
+
+    for _ in range(num_questions):
         # Chọn số ngẫu nhiên từ 0 đến 10^max_digits - 1
-        a = random.randint(0, 10**max_digits)
-        b = random.randint(0, 10**max_digits)
+        a = random.randint(0, 10 ** max_digits)
+        b = random.randint(0, 10 ** max_digits)
+
         # Chọn một phép toán ngẫu nhiên
         op = random.choice(operators)
+
         # Sinh ra đề bài
-        question = str(a) + " " + op + " " + str(b) + " = ?"
+        question = f'{a} {op} {b} = ?'
+
         # Sinh ra đáp án
         if op == "+":
             answer = a + b
         elif op == "-":
             answer = a - b
+
         # Thêm câu hỏi vào danh sách
         data.append(Question(question, str(answer)))
+
     # Trả về danh sách câu hỏi tính nhẩm Siêu Trí Tuệ.
     return data
 
@@ -181,7 +199,7 @@ def ask_question(question):
     # Gọi hàm viết điểm số ra màn hình.
     draw_score()
     # Vẽ hình nhân vật trạng thái bình thường
-    draw_avatar('emmet_normal.gif')
+    draw_avatar(f'{MEDIA_DIR}/emmet_normal.gif')
     # Trước khi hỏi câu hỏi mới, cần khởi động lại đồng hồ bấm giờ
     state.reset_timer()
 
@@ -198,7 +216,7 @@ def check_result(result, answer):
     time_taken = state.get_timer()
     # Tính điểm thưởng nếu trả lời nhanh.
     if time_taken < 3:
-        bonus = 20
+        bonus = 10
     else:
         bonus = 0
     if result == answer:
@@ -206,17 +224,17 @@ def check_result(result, answer):
         # Cộng điểm trả lời đúng và cả điểm thưởng nữa.
         state.score += 10 + bonus
         # Chơi âm thanh cho biết trả lời đúng.
-        play_sound("Cheer.wav")
+        play_sound(f'{MEDIA_DIR}/Cheer.wav')
 
         # Vẽ hình nhân vật khi trả lời đúng.
-        draw_avatar('emmet_win.gif')
+        draw_avatar(f'{MEDIA_DIR}/emmet_win.gif')
         print("Đúng rồi")
     else:
         # Chơi âm thanh cho biết trả lời sai.
-        play_sound("ohno.wav")
+        play_sound(f'{MEDIA_DIR}/ohno.wav')
 
         # Vẽ hình nhân vật khi trả lời sai.
-        draw_avatar('emmet_lose.gif')
+        draw_avatar(f'{MEDIA_DIR}/emmet_lose.gif')
         print("Sai rồi")
 
     # Chờ một chút để thấy rõ nhân vật cử động.
@@ -234,7 +252,7 @@ def setup_turtle():
     # Thiết lập kích thước màn hình
     screen.setup(1200, 600)
     # Thiết lập ảnh nền cho màn hình
-    screen.bgpic('background.gif')
+    screen.bgpic(f'{MEDIA_DIR}/background.gif')
     # Thiết lập tiêu đề cho cửa sổ chương trình
     turtle.title("Siêu lập trình")
 
@@ -258,10 +276,13 @@ def ending():
         pen_score.write('You are the winner!', font=get_font(30))
 
 
+# MAIN PROGRAM
+# ============
+
 # Gọi hàm thiết lập màn hình
 setup_turtle()
 # Chơi nhạc
-play_music("music.wav")
+play_music(f'{MEDIA_DIR}/music.wav')
 
 # Vẽ thời gian
 state.reset_timer()
@@ -280,4 +301,4 @@ ending()
 
 
 while True:
-    pass
+    time.sleep(10)
