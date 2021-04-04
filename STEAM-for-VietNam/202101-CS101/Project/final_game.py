@@ -5,7 +5,7 @@ import turtle
 
 
 # Class thể hiện đối tượng Câu hỏi
-# Một đối tượng Question gồm có 2 fields: 
+# Một đối tượng Question gồm có 2 fields:
 # - question: đề bài
 # - answer: đáp án
 class Question:
@@ -13,34 +13,43 @@ class Question:
         self.question = question
         self.answer = answer
 
-        
+
 # Class thể hiện trạng thái hiện tại của trò chơi
 class GameState:
     # Điểm số hiện tại
     score = 0
+
     # Khởi động lại đồng hồ bấm giờ: cho giá trị bằng thời gian hiện tại
     def reset_timer(self):
         self.start_time = time.time()
+
     # Trả về thời gian trả lời câu hỏi (tính bằng giây), bằng cách lấy
     # thời gian đồng hồ trừ đi thời gian start_time đã lưu.
     def get_timer(self):
         return time.time() - self.start_time
 
+
 # Khởi tạo đối tượng cụ thể lưu trạng thái của trò chơi
 state = GameState()
 
-# Dùng thư viện pygame để chơi âm thanh. 
+
+# Dùng thư viện pygame để chơi âm thanh.
 def play_music(file):
     pygame.mixer.init()
     pygame.mixer.music.load(file)
     pygame.mixer.music.play()
-    
+
+
 def play_sound(file):
     pygame.mixer.init()
     sound = pygame.mixer.Sound(file)
     sound.play()
+
+
 # Vẽ hình nhân vật.
-avatar = turtle.Turtle()         
+avatar = turtle.Turtle()
+
+
 def draw_avatar(image):
     # Phải gọi lệnh turtle.addshape trước khi vẽ ảnh.
     turtle.addshape(image)
@@ -87,17 +96,17 @@ def read_data():
         filename = 'q' + str(i) + '.txt'
         f = open(filename, 'r', encoding='utf-8')
         question = f.read()
-        f.close()    
-        
+        f.close()
+
         # Đọc đáp án
         filename = 'a' + str(i) + '.txt'
         f = open(filename, 'r', encoding='utf-8')
         answer = f.read()
-        f.close()    
+        f.close()
 
         # Tạo đối tượng Question và thêm vào mảng dữ liệu data
         data.append(Question(question, answer))
-    # Trả về mảng dữ liệu data     
+    # Trả về mảng dữ liệu data
     return data
 
 
@@ -108,7 +117,7 @@ def generate_math_questions():
     # Số lượng câu hỏi sinh ra.
     num_questions = 3
     # Hai phép toán: cộng và nhân
-    operators = ["+", "-"]    
+    operators = ["+", "-"]
     # Số lượng chữ số tối đa khi sinh câu hỏi ngẫu nhiên
     max_digits = 2
     for i in range(num_questions):
@@ -123,7 +132,7 @@ def generate_math_questions():
         if op == "+":
             answer = a + b
         elif op == "-":
-            answer = a - b            
+            answer = a - b
         # Thêm câu hỏi vào danh sách
         data.append(Question(question, str(answer)))
     # Trả về danh sách câu hỏi tính nhẩm Siêu Trí Tuệ.
@@ -177,8 +186,12 @@ def ask_question(question):
     state.reset_timer()
 
     # Hỏi người dùng nhập câu trả lời qua giao diện Turtle
-    result = turtle.textinput("Siêu Lập Trình Emmet", "Câu trả lời của bạn là gì?\n")    # So sánh kết quả của người chơi nhập vào với đáp án
+    result = turtle.textinput("Siêu Lập Trình Emmet",
+                              "Câu trả lời của bạn là gì?\n")
+    # So sánh kết quả của người chơi nhập vào với đáp án
     check_result(result, question.answer)
+
+
 # So sánh câu trả lời với đáp án
 def check_result(result, answer):
     # Thời gian người chơi trả lời câu hỏi (tính bằng giây).
@@ -210,27 +223,20 @@ def check_result(result, answer):
     time.sleep(0.5)
     print("Thời gian trả lời câu hỏi là:", round(time_taken), "giây")
     if bonus > 0:
-        print("Bạn nhận được điểm thưởng là", bonus, "vì trả lời nhanh")            
+        print("Bạn nhận được điểm thưởng là", bonus, "vì trả lời nhanh")
     print("Điểm hiện tại của bạn là: ", state.score)
+
 
 # Thiết lập màn hình giao diện turtle
 def setup_turtle():
     # Màn hình Turtle
     screen = turtle.Screen()
-    # Thiết lập kích thước màn hình 
+    # Thiết lập kích thước màn hình
     screen.setup(1200, 600)
     # Thiết lập ảnh nền cho màn hình
     screen.bgpic('background.gif')
     # Thiết lập tiêu đề cho cửa sổ chương trình
     turtle.title("Siêu lập trình")
-pen = turtle.Turtle
-def setup_turtle():
-    # Màn hình Turtle
-    screen = turtle.Screen()
-    # Thiết lập kích thước màn hình 
-    screen.setup(1200, 600)
-    # Thiết lập ảnh nền cho màn hình
-    screen.bgpic('background.gif')
 
 
 def ending():
@@ -243,12 +249,14 @@ def ending():
     # Đổi màu.
     pen_score.color('red')
     # Đặt vị trí.
-    pen_score.setposition(0,0)
+    pen_score.setposition(0, 0)
     # Viết điểm số ra màn hình.
     if (state.score < the_highest_score):
-        pen_score.write('Try again next time to get more than 150', font=get_font(30))
+        pen_score.write('Try again next time to get more than 150',
+                        font=get_font(30))
     else:
         pen_score.write('You are the winner!', font=get_font(30))
+
 
 # Gọi hàm thiết lập màn hình
 setup_turtle()
