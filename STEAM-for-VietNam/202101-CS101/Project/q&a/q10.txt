@@ -6,5 +6,5 @@ If a piece of code is like this:
 what will the result be?
 a. name name name name name name name name name name
 b. name
-c. Error becuase it is not "for i in ..."
+c. Error because "for _ in ..." is invalid
 d. 10, name

@@ -1,4 +1,4 @@
-If there is a maze that you have to solve,
+If there is a maze that you are asked to solve,
 which of these ways can find the shortest path?
 a. stay there
 b. Depth-First Search (DFS)

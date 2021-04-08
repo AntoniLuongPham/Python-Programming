@@ -1,5 +1,5 @@
-If a list is this: [0, 10, 100] if you print
-item 1, what will it be?
+If a Python list is this: [0, 10, 100] if you print the
+item at index 1, what will it be?
 a. 0
 b. 10
 c. 100

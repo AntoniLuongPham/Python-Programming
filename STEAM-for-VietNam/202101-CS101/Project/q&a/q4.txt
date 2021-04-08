@@ -1,6 +1,7 @@
-Which of these colors are Primary?
-(hint: two primary colors when mixed together make a secondary color)
-a. Red 
+Which of these colors are Primary colors?
+(hint: two primary colors when mixed together make a secondary color, such as
+Green, Orange, or Purple)
+a. Red
 b. Blue
 c. Green
 d. (a) and (b)
