@@ -17,7 +17,7 @@
 
   "python.linting.mypyEnabled": true,
 
-  "python.linting.pydocstyleEnabled": true,
+  "python.linting.pydocstyleEnabled": false,
 
   "python.linting.pycodestyleEnabled": true,
 
