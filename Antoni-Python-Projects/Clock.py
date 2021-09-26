@@ -1,9 +1,10 @@
 import time
 
 
+hrs = 0
 mins = 0
 secs = 0
-hrs = 0
+
 
 while True:
     time.sleep(1)
