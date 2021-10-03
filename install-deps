@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+
+SUB_DIR_PATH=${1:-.}
+
+
+python3 -m pip install PIP SetUpTools --upgrade
+
+python3 -m pip install -r $SUB_DIR_PATH/requirements.txt --upgrade --user
