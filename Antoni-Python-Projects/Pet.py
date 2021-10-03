@@ -1,5 +1,5 @@
 class Pet:
-    def __init__ (self, name: str, thing_to_do: str):
+    def __init__(self, name: str, thing_to_do: str):
         self.name = name
         self.thing_to_do = thing_to_do
 
