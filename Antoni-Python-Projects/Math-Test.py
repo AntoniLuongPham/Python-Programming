@@ -1,9 +1,8 @@
 from random import randint
-
-
+from typing import List
+high_scores = list()
 n_questions = int(input("how many questions do you want in this math test? "))
 points = 0
-
 for i in range(n_questions):
     a = randint(1, 100)
     b = randint(1, 100)
@@ -17,8 +16,8 @@ for i in range(n_questions):
     else:
         print("that was wrong, but good try! :)")
 
-print(f"You got {points} out of {n_questions}")
+print(f"You got {points} out of {n_questions}!")
 if points < n_questions / 2:
-    print("good try!")
+    print("good try.")
 else:
-    print("great job!")
+    print(f"great job!")

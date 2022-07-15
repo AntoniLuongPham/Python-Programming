@@ -14,11 +14,6 @@ one_to_ten_vars = [one, two, three, four, five, six, seven, eight, nine, ten]
 print(one_to_ten, '\n', one_to_ten_vars, sep='')
 print(one, two, three, four, five, six, seven, eight, nine, ten)
 
-primary_colors = ["blue", "red", "yellow"]
-secondary_colors = [
-    ["orange", "red and yellow"],
-    ["green", "blue and yellow"],
-    ["purple", "red and blue"]
-]
-
-print(secondary_colors[1])
+one = 0
+one += 1
+print(one)
