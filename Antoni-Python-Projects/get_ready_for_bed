@@ -1,0 +1,15 @@
+Night_time()
+function Night_time() {
+    var self = {
+        name: "Antoni",
+        age: "8",
+        job: "student"
+    }
+
+    var house = {
+        address: "1783 Gable Lane"
+    }
+
+    GetReadyToGoToBed()
+}
+

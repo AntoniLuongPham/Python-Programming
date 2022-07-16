@@ -2,7 +2,7 @@ import time
 
 
 mins = int(input('How many minutes? '))
-secs = 0
+secs = int(input('How many seconds? '))
 
 while mins or secs:
     time.sleep(1)

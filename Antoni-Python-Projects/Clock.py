@@ -1,9 +1,13 @@
 import time
 
 
-hrs = 0
-mins = 0
-secs = 0
+def import_vars():
+    hrs = 0
+    mins = 0
+    secs = 0
+    return hrs,mins,secs
+
+hrs, mins, secs = import_vars()
 
 
 while True:

@@ -55,4 +55,5 @@ if sixth_letter == F:
 else:
     print('Wrong')
 
-print(f"You guessed {my_letters}.")
+answer = print(f"You guessed {my_letters}.")
+answer
