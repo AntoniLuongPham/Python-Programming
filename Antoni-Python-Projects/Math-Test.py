@@ -1,6 +1,4 @@
 from random import randint
-from typing import List
-high_scores = list()
 n_questions = int(input("how many questions do you want in this math test? "))
 points = 0
 for i in range(n_questions):

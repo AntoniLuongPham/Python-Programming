@@ -1,5 +1,3 @@
-numbers = [-9, 97, -57, -100, 90, -1, -20]
-
 def count(numbers):
     total = 0
 
@@ -7,4 +5,6 @@ def count(numbers):
         total += i
         print(total)
 
-count(numbers)
+numbers = [-9, 97, -57, -100, 90, -1, -20]
+main = count(numbers)
+main

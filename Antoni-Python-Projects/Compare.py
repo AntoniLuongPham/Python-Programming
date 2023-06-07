@@ -1,14 +1,5 @@
-from cv2 import compare
-
-
-
-def compare():
-    a = int(input('chose a number. '))
-    b = int(input('chose a number. '))
+def compare(a, b):
     print(a == b)
-    return compare
-
-compare()
 
 
-
+compare(7, 7)
